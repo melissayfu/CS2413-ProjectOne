@@ -38,6 +38,17 @@ class SparseMatrix {
         ostream& operator<< (ostream& s, const SparseMatrix& sm);
         displayMatrix (); //Display the matrix in its original format
         //other methods that are necessary such as get and set
+        void setNoRows(int n); //Set the number of rows
+        void setNoCols(int m); //Set the number of columns
+        void setCommonValue(int cv); //Set the common value
+        void setNoNonSparseValues(int nsv); //Set the number of non-sparse values
+        int getNoRows(); //Get the number of rows
+        int getNoCols(); //Get the number of columns
+        int getCommonValue(); //Get the common value
+        int getNoNonSparseValues(); //Get the number of non-sparse values
+
+
+
 };
 
 int main () {
