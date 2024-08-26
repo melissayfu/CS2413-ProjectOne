@@ -19,7 +19,7 @@ class SparseRow {
         void setValue(int v); //Set the value
         int getRow(); //Get the row number
         int getCol(); //Get the column number
-        int getValue(); //Get the value
+        int getValue(); //Get the value 
 };
 
 class SparseMatrix {
