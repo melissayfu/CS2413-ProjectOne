@@ -22,6 +22,8 @@ class SparseRow {
         int getValue(); //Get the value 
 };
 
+
+
 class SparseMatrix {
     protected:
         int noRows; //Number of rows of the original matrix
