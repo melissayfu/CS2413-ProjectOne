@@ -90,7 +90,8 @@ class SparseMatrix {
         int getCommonValue(); //Get the common value
         int getNoNonSparseValues(); //Get the number of non-sparse values
 
-        SparseMatrix::SparseMatrix() {
+        //default constructor
+        SparseMatrix::SparseMatrix() { 
             noRows = 0;
             noCols = 0;
             commonValue = 0;
@@ -98,7 +99,8 @@ class SparseMatrix {
             myMatrix = nullptr;
         }
 
-        SparseMatrix::SparseMatrix(int n, int m, int cv) {
+        //constructor
+        SparseMatrix::SparseMatrix(int n, int m, int cv) { 
             noRows = n;
             noCols = m;
             commonValue = cv;
@@ -106,11 +108,13 @@ class SparseMatrix {
             myMatrix = nullptr;
         }
 
+        //constructor
         SparseMatrix* SparseMatrix::Transpose() {
             SparseMatrix* transposedMatrix = new SparseMatrix(noCols, noRows, commonValue);
             transposedMatrix->noNonSparseValues = noNonSparseValues;
             transposedMatrix->myMatrix = new SparseRow[noNonSparseValues];
 
+            // Transpose the matrix
             int index = 0;
             for (int i = 0; i < noCols; i++) {
                 for (int j = 0; j < noNonSparseValues; j++) {
@@ -126,22 +130,24 @@ class SparseMatrix {
             return transposedMatrix;
         }
 
+        // Multiply two matrices
         SparseMatrix* SparseMatrix::Multiply(SparseMatrix& M) {
             if (noCols != M.noRows) {
                 cout << "Error: Incompatible matrix dimensions for multiplication." << endl;
                 return nullptr;
             }
-
+        
+            // Multiply the matrices
             SparseMatrix* multipliedMatrix = new SparseMatrix(noRows, M.noCols, commonValue);
             multipliedMatrix->noNonSparseValues = 0;
             multipliedMatrix->myMatrix = new SparseRow[noRows * M.noCols];
-
+        
             for (int i = 0; i < noRows; i++) {
                 for (int j = 0; j < M.noCols; j++) {
                     int sum = 0;
                     for (int k = 0; k < noCols; k++) {
-                        int value1 = getValue(i, k);
-                        int value2 = M.getValue(k, j);
+                        int value1 = myMatrix[i].getValue(); 
+                        int value2 = M.myMatrix[k * M.noCols + j].getValue();
                         sum += value1 * value2;
                     }
                     if (sum != commonValue) {
@@ -152,10 +158,11 @@ class SparseMatrix {
                     }
                 }
             }
-
+        
             return multipliedMatrix;
         }
 
+        // Add two matrices
         SparseMatrix* SparseMatrix::Add(SparseMatrix& M) {
             if (noRows != M.noRows || noCols != M.noCols) {
                 cout << "Error: Incompatible matrix dimensions for addition." << endl;
@@ -218,13 +225,15 @@ class SparseMatrix {
             return addedMatrix;
         }
 
-        ostream& operator<<(ostream& s, const SparseMatrix& sm) {
+        // Overloaded << operator definition
+        ostream& operator<<(ostream& s, const SparseMatrix& sm) { //Issue of too many parameters for this operator function. 
             for (int i = 0; i < sm.noNonSparseValues; i++) {
                 s << sm.myMatrix[i] << endl;
             }
             return s;
         }
 
+        // Display method definition
         void SparseMatrix::displayMatrix() {
             int index = 0;
             for (int i = 0; i < noRows; i++) {
@@ -240,6 +249,7 @@ class SparseMatrix {
             }
         }
 
+        // Setter methods definitions
         void SparseMatrix::setNoRows(int n) {
             noRows = n;
         }
@@ -256,6 +266,7 @@ class SparseMatrix {
             noNonSparseValues = nsv;
         }
 
+        // Getter methods definitions
         int SparseMatrix::getNoRows() {
             return noRows;
         }
