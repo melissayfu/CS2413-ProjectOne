@@ -78,7 +78,7 @@ class SparseMatrix {
         SparseMatrix* Transpose (); //Matrix Transpose
         SparseMatrix* Multiply (SparseMatrix& M);
         SparseMatrix* Add (SparseMatrix& M);
-        friend ostream& operator<< (ostream& s, const SparseMatrix& sm); //print the matrix in sparse format. Fixed display format using CoPilot.
+        friend ostream& operator<< (ostream& s, const SparseMatrix& sm); //print the matrix in sparse format.
         void displayMatrix(); //Display the matrix in its original format. Fixed display format to "Void" using CoPilot.
         //other methods that are necessary such as get and set
         void setNoRows(int n); //Set the number of rows
@@ -226,7 +226,7 @@ class SparseMatrix {
         }
 
         // Overloaded << operator definition
-        ostream& operator<<(ostream& s, const SparseMatrix& sm) { //Issue of too many parameters for this operator function. 
+        ostream& operator<<(ostream& s, const SparseMatrix& sm) {
             for (int i = 0; i < sm.noNonSparseValues; i++) {
                 s << sm.myMatrix[i] << endl;
             }
