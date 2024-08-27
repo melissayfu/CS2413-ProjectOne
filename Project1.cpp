@@ -11,18 +11,59 @@ class SparseRow {
         int value; //We will assume that all our values will be integers
     public:
         SparseRow (); //default constructor; row=-1;col=-1;value=0
-        display(); // print Row#, Column#, value
-        ostream& operator<< (ostream& s, const SparseRow);
+        void display(); // print Row#, Column#, value. Fixed display format using CoPilot.
+        friend ostream& operator<<(ostream& s, const SparseRow& sr); // print Row#, Column#, value. Fixed display format using CoPilot.
         //other methods that are necessary such as get and set
         void setRow(int r); //Set the row number
         void setCol(int c); //Set the column number
         void setValue(int v); //Set the value
-        int getRow(); //Get the row number
-        int getCol(); //Get the column number
-        int getValue(); //Get the value 
+        int getRow() const; //Get the row number
+        int getCol() const; //Get the column number
+        int getValue() const; //Get the value 
 };
 
+// Constructor definition
+SparseRow::SparseRow() {
+    row = -1;
+    col = -1;
+    value = 0;
+}
 
+// Display method definition
+void SparseRow::display() {
+    cout << "Row#: " << row << ", Column#: " << col << ", Value: " << value << endl;
+}
+
+// Overloaded << operator definition
+ostream& operator<<(ostream& s, const SparseRow& sr) {
+    s << "Row#: " << sr.getRow() << ", Column#: " << sr.getCol() << ", Value: " << sr.getValue(); 
+    return s;
+}
+
+// Setter methods definitions
+void SparseRow::setRow(int r) {
+    row = r;
+}
+
+void SparseRow::setCol(int c) {
+    col = c;
+}
+
+void SparseRow::setValue(int v) {
+    value = v;
+}
+// Getter methods definitions
+int SparseRow::getRow() const {
+    return row;
+}
+
+int SparseRow::getCol() const {
+    return col;
+}
+
+int SparseRow::getValue() const {
+    return value;
+}
 
 class SparseMatrix {
     protected:
