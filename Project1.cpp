@@ -100,11 +100,11 @@ class SparseMatrix {
         }
 
         //constructor
-        SparseMatrix::SparseMatrix(int n, int m, int cv) { 
+        SparseMatrix::SparseMatrix(int n, int m, int cv, int noNSV) { //constructor fixed to include the parameater "noNSV" to match the main method call. This was found using coPilot.
             noRows = n;
             noCols = m;
             commonValue = cv;
-            noNonSparseValues = 0;
+            noNonSparseValues = noNSV;
             myMatrix = nullptr;
         }
 
@@ -225,8 +225,8 @@ class SparseMatrix {
             return addedMatrix;
         }
 
-        // Overloaded << operator definition
-        ostream& operator<<(ostream& s, const SparseMatrix& sm) {
+        // Overloaded << operator definition. Made it a friend function to access protected members.
+        friend ostream& operator<<(ostream& s, const SparseMatrix& sm) {
             for (int i = 0; i < sm.noNonSparseValues; i++) {
                 s << sm.myMatrix[i] << endl;
             }
