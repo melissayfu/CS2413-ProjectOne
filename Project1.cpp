@@ -315,13 +315,13 @@ cout << (*(*firstOne).Transpose());
 
 cout << "Matrix Addition Result" << endl;
 
-temp = (*(*firstOne).Addition(secondOne));
+temp = (*firstOne).Add(*secondOne); //Fixed the method call from "Addition" to "Add" class "SparseMatrix" has no member "Addition" to match the method definition. This was found using coPilot.
 cout << temp;
 (*temp).displayMatrix();
 
 cout << "Matrix Multiplication Result" << endl;
 
-temp = (*(*firstOne).Multiply(secondOne));
+temp = (*firstOne).Multiply(*secondOne); //Dereference the pointer when passing it as an argument. Bug and fix by coPilot.
 cout << temp;
 (*temp).displayMatrix();
 }
