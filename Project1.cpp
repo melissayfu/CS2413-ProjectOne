@@ -89,7 +89,7 @@ class SparseMatrix {
         int getNoCols(); //Get the number of columns
         int getCommonValue(); //Get the common value
         int getNoNonSparseValues(); //Get the number of non-sparse values
-
+};
         //default constructor
         SparseMatrix::SparseMatrix() { 
             noRows = 0;
@@ -225,7 +225,7 @@ class SparseMatrix {
         }
 
         // Overloaded << operator definition. Made it a friend function to access protected members.
-        friend ostream& operator<<(ostream& s, const SparseMatrix& sm) {
+        ostream& operator<<(ostream& s, const SparseMatrix& sm) {
             for (int i = 0; i < sm.noNonSparseValues; i++) {
                 s << sm.myMatrix[i] << endl;
             }
@@ -281,8 +281,6 @@ class SparseMatrix {
         int SparseMatrix::getNoNonSparseValues() {
             return noNonSparseValues;
         }
-
-};
 
 int main () {
 
