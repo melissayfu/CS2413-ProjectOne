@@ -100,11 +100,10 @@ class SparseMatrix {
         }
 
         //constructor
-        SparseMatrix::SparseMatrix(int n, int m, int cv, int noNSV) { //constructor fixed to include the parameater "noNSV" to match the main method call. This was found using coPilot.
+        SparseMatrix::SparseMatrix(int n, int m, int cv) { //constructor fixed to include the parameater "noNSV" to match the main method call. This was found using coPilot.
             noRows = n;
             noCols = m;
             commonValue = cv;
-            noNonSparseValues = noNSV;
             myMatrix = nullptr;
         }
 
