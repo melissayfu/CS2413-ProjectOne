@@ -291,11 +291,11 @@ int n, m, cv, noNSV;
 SparseMatrix* temp;
 
 cin >> n >> m >> cv >> noNSV;
-SparseMatrix* firstOne = new SparseMatrix(n, m, cv, noNSV);
+SparseMatrix* firstOne = new SparseMatrix(n, m, cv);
 
 //Write the Statements to read in the first matrix
 cin >> n >> m >> cv >> noNSV;
-SparseMatrix* secondOne = new SparseMatrix(n, m, cv, noNSV);
+SparseMatrix* secondOne = new SparseMatrix(n, m, cv);
 
 //Write the Statements to read in the second matrix
 cout << "First one in matrix format" << endl;
